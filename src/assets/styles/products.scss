@@ -1,0 +1,45 @@
+.products {
+    padding: 30px;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.product {
+    width: 90%;
+    height: 550px;
+    text-align: left;
+    border: 5px solid rgb(254, 38, 0);
+    border-radius: 5px;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 5%;
+    background-color: rgb(0, 15, 70);
+    color: white;
+}
+
+.product img {
+    height: 300px;
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10%;
+    border-bottom: 5px solid rgb(254, 38, 0);
+}
+
+.product p {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.product button {
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px;
+}
