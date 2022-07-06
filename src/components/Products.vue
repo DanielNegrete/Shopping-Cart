@@ -62,6 +62,7 @@ export default {
       }
       localStorage.setItem("cart", JSON.stringify(this.cart));
       localStorage.setItem("cartQ", this.cart.reduce((acc, item) => acc + item.productQ, 0));
+      this.$toast.success(`Product added`, { position: 'top-right'});
     }
   }
 }

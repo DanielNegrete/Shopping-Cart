@@ -1,14 +1,33 @@
 <template>
-  <div>
+  <div class="cart">
     <h1>Your cart </h1>
-    <div class="parent">
-      <div class="product" v-for="item in cart" v-bind:key="item.productId">
-        <img v-bind:src="item.productImage" class="img-fluid" width="250px" v-bind:alt="item.productName">
-        <p>Name:<a>{{ item.productName }}</a></p>
-        <p>Categorie:<a>{{ item.productCategorie }}</a></p>
-        <p>Price: <a>${{ item.productPrice }}</a></p>
-        <p>Quantitiy: <a>{{ item.productQ }}</a></p>
-      </div>
+    <hr><br>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Categorie</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in cart" v-bind:key="item.productId">
+            <td>{{ item.productName }}</td>
+            <td>{{ item.productCategorie }}</td>
+            <td>${{ item.productPrice }}</td>
+            <td>{{ item.productQ }}</td>
+            <td><fa icon="xmark" @click="removeCart(item)"></fa></td>
+          </tr>
+        </tbody>
+      </table><br>
+      <span>Coupon: <input type="text" name="" id=""></span>
+      <button @click="coupon()">Apply</button>
+      <br><br>
+      <span>Total price: ${{ totalPrice }}</span><br><br>
+      <button @click="onPurchase()">Purchase</button>
     </div>
   </div>
 </template>
@@ -20,16 +39,42 @@ export default {
   props: {
     msg: String
   },
-  data(){
-    return{
+  data() {
+    return {
       cart: []
     }
   },
   created() {
     let products = localStorage.getItem("cart");
-    if(products != null){
+    if (products != null) {
       this.cart = JSON.parse(products);
+    }
+  },
+  computed: {
+    productsInCart() {
+      return this.cart.reduce((acc, item) => acc + item.productQ, 0);
+    },
+    totalPrice() {
+      return this.cart.reduce((acc, item) => acc + item.productQ * item.productPrice, 0);
+    }
+  },
+  methods: {
+    onPurchase() {
+      this.$swal.fire('Thank You!!', 'Your purchase has been completed', 'success');
+      this.cart = [];
+      localStorage.removeItem('cart');
+    },
+    removeCart(product){
+      let iProduct = 0;
+      this.cart.forEach((item, i) =>
+        item.productId == product.productId ? (iProduct = i) : null
+      );
+      this.cart.splice(iProduct, 1);
+      this.$toast.error(`Product removed`, { position: 'top-right'});
     }
   }
 }
 </script>
+
+<style lang="scss" src="../assets/styles/cart.scss">
+</style>
