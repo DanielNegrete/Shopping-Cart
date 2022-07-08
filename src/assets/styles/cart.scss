@@ -1,18 +1,17 @@
 .cart {
     width: 100%;
-    text-align: justify;
-    padding: 3%;
+    text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
+    padding-top: 2%;
+}
+
+.cart table {
     width: 100%;
 }
 
-.cart table{
-    width: 95%;
-}
-
-.cart hr{
-    width: 80%;
+.cart hr {
+    width: 100%;
 }
 
 .cart td,
@@ -29,9 +28,20 @@ th {
     color: white;
 }
 
-.cart button{
+.cart button {
     text-align: center;
     margin-left: 1%;
     padding-left: 2%;
     padding-right: 2%;
+}
+
+.purchase {
+    padding-top: 2%;
+    font-size: 22px;
+    width: 100%;
+    text-align: right;
+}
+
+.purchase button {
+    width: 20%;
 }

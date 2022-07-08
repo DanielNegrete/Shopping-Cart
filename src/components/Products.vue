@@ -23,10 +23,13 @@ export default {
   props: {
     msg: String
   },
-  data: {
-
+  created() {
+    let products = localStorage.getItem("cart");
+    if (products != null) {
+      this.cart = JSON.parse(products);
+    }
   },
-  data(){
+  data() {
     return {
       cart: []
     }
@@ -63,7 +66,7 @@ export default {
       localStorage.setItem("cart", JSON.stringify(this.cart));
       localStorage.setItem("cartQ", this.cart.reduce((acc, item) => acc + item.productQ, 0));
       localStorage.setItem("totalPrice", this.cart.reduce((acc, item) => acc + item.productQ * item.productPrice, 0));
-      this.$toast.success(`Product added`, { position: 'top-right'});
+      this.$toast.success(`Product added`, { position: 'top-right' });
     }
   }
 }

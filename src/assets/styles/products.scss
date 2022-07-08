@@ -36,10 +36,16 @@
     padding-right: 5%;
 }
 
-.product button {
+button {
     width: 50%;
+    padding: 5px;
     margin-left: 25%;
-    border-radius: 5px;
     background-color: white;
-    padding: 10px;
+    border: 2px solid rgb(216, 216, 216);
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: rgb(254, 38, 0);
+    color: white;
 }
